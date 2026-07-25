@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>finops-guide dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>finops-guide</h1>
+    <div id="live-indicator" class="live-indicator offline">
+      <span class="dot"></span>
+      <span id="live-indicator-text">connecting...</span>
+    </div>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Today</h3>
+      <p id="card-today" class="card-value">-</p>
+    </div>
+    <div class="card">
+      <h3>Month to date</h3>
+      <p id="card-mtd" class="card-value">-</p>
+    </div>
+    <div class="card">
+      <h3>Projected month end</h3>
+      <p id="card-forecast" class="card-value">-</p>
+    </div>
+    <div class="card">
+      <h3>Active anomalies</h3>
+      <p id="card-anomalies" class="card-value">-</p>
+    </div>
+  </section>
+
+  <section class="charts">
+    <div class="chart-box">
+      <h3>Cost by provider (7d)</h3>
+      <canvas id="chart-provider"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Cost by service (7d)</h3>
+      <canvas id="chart-service"></canvas>
+    </div>
+    <div class="chart-box wide">
+      <h3>Daily spend trend (30d)</h3>
+      <canvas id="chart-trend"></canvas>
+    </div>
+  </section>
+
+  <section class="tables">
+    <div class="table-box">
+      <h3>Anomalies</h3>
+      <table id="table-anomalies">
+        <thead>
+          <tr><th>Resource</th><th>Service</th><th>Team</th><th>Cost</th><th>Baseline</th><th>Z-score</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="table-box">
+      <h3>Budgets</h3>
+      <table id="table-budgets">
+        <thead>
+          <tr><th>Budget</th><th>MTD actual</th><th>% used</th><th>Projected</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="table-box">
+      <h3>Idle resources (rightsizing candidates)</h3>
+      <table id="table-idle">
+        <thead>
+          <tr><th>Resource</th><th>Service</th><th>Avg utilization</th><th>Projected monthly cost</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="table-box">
+      <h3>Commitment coverage opportunities</h3>
+      <table id="table-commitments">
+        <thead>
+          <tr><th>Provider</th><th>Service</th><th>On-demand share</th><th>Est. monthly savings</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="feed">
+    <h3>Live feed</h3>
+    <ul id="live-feed-list"></ul>
+  </section>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>

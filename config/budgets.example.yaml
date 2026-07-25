@@ -1,0 +1,49 @@
+# Monthly budgets used by `finops report --type budgets` and the /api/budgets
+# endpoint. Amounts are in USD. Copy this to config/budgets.yaml and edit -
+# that file is gitignored so you don't have to commit your real numbers.
+#
+# "scope" tells the budget engine which dimension to match against:
+#   team, environment, provider, or account_id
+
+budgets:
+  - name: platform-team
+    scope: team
+    match: platform
+    monthly_amount: 18000
+    alert_threshold_pct: 80
+
+  - name: data-team
+    scope: team
+    match: data
+    monthly_amount: 12000
+    alert_threshold_pct: 80
+
+  - name: ml-team
+    scope: team
+    match: ml
+    monthly_amount: 25000
+    alert_threshold_pct: 75
+
+  - name: frontend-team
+    scope: team
+    match: frontend
+    monthly_amount: 6000
+    alert_threshold_pct: 80
+
+  - name: production-environment
+    scope: environment
+    match: prod
+    monthly_amount: 38000
+    alert_threshold_pct: 85
+
+  - name: staging-environment
+    scope: environment
+    match: staging
+    monthly_amount: 9000
+    alert_threshold_pct: 80
+
+  - name: dev-environment
+    scope: environment
+    match: dev
+    monthly_amount: 9000
+    alert_threshold_pct: 90
